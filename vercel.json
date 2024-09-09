@@ -11,5 +11,10 @@
       "src": "/(.*)",
       "dest": "src/main/java/com/example/student_service/StudentServiceApplication.java"
     }
-  ]
+  ],
+  "functions": {
+    "api/**/*.java": {
+      "runtime": "java11"
+    }
+  }
 }
