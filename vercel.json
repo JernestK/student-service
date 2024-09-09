@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/main/java/com/example/**/*.java",
+      "use": "@vercel/java"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/main/java/com/example/student_service/StudentServiceApplication.java"
+    }
+  ]
+}
