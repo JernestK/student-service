@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Import Excel</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container my-5" th:if="${students != null}">
+    <h1>Aperçu du fichier Excel</h1>
+
+    <!-- Vérification du type pour afficher le tableau des étudiants -->
+    <div th:if="${type == 'workspace'}">
+        <h2>Tableau des Étudiants</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>First Name [Required]</th>
+                <th>Last Name [Required]</th>
+                <th>Email Address [Required]</th>
+                <th>Password [Required]</th>
+                <th>Change Password at Next Sign-In</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.identifier}"></td>
+                <td th:text="${student.password}"></td>
+                <td>YES</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h2>Tableau des Membres</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Group Email [Required]</th>
+                <th>Member Email [Required]</th>
+                <th>Member Type</th>
+                <th>Member Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${tables['table2']}">
+                <td th:text="${member[0]}"></td>
+                <td th:text="${member[1]}"></td>
+                <td th:text="${member[2]}"></td>
+                <td th:text="${member[3]}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+<!--    connexion à la plateforme Moodle-->
+    <div th:if="${type == 'moodle'}">
+        <h2>Identifiants de connexion à la plateforme Moodle</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Login [Required]</th>
+                <th>Password [Required]</th>
+                <th>Change Password at Next Sign-In</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.identifier}"></td>
+                <td th:text="${student.password}"></td>
+                <td>YES</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!--    Matricules -->
+    <div th:if="${type == 'matricule'}">
+        <h2>Liste des matricules</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Matricule [Required]</th>
+                <th>First Name [Required]</th>
+                <th>Last Name [Required]</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.identifier}"></td>
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.lastName}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--    connexion au portail captif-->
+    <div th:if="${type == 'portail_captif'}">
+        <h2>Identifiants de connexion au portail captif</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Matricule [Required]</th>
+                <th>Password [Required]</th>
+                <th>Change Password at Next Sign-In</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.identifier}"></td>
+                <td th:text="${student.password}"></td>
+                <td>YES</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <a id="dwlPdf" class="btn btn-danger me-2">Télécharger en PDF</a>
+        <a id="dwlExcel" class="btn btn-success me-2">Télécharger en Excel</a>
+    </div>
+</div>
+<script src="/js/jquery-3.6.4.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

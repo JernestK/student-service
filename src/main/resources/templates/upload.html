@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Import Excel</title>
+    <link rel="stylesheet" th:href="@{/css/upload.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container my-5">
+    <h1>Importer un fichier Excel</h1>
+    <form th:action="@{${window.controllerPath}/upload}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="fileInput" class="form-label">Choisissez un fichier Excel</label>
+            <input type="file" class="form-control" id="fileInput" name="file" required>
+        </div>
+        <button id="importButton" type="submit" class="btn btn-primary">Importer</button>
+    </form>
+</div>
+
+<!-- Fenêtre modale -->
+<div id="modal" class="modal">
+    <div class="modal-content text-center">
+        <h2 class="danger">Attention !</h2>
+        <p id="modal-message"></p>
+        <button class="btn btn-danger my-4" onclick="closeModal()">Fermer</button>
+    </div>
+</div>
+<script th:src="@{/js/jquery-3.6.4.min.js}"></script>
+<script th:src="@{/js/upload.js}"></script>
+</body>
+</html>

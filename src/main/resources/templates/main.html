@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des étudiants</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container my-4">
+    <h1 class="text-center">Génération des fichiers</h1>
+    <nav class="nav nav-fill my-3">
+        <a id="workspace" class="nav-item nav-link mx-2 text-white btn btn-primary">Workspace</a>
+        <a id="moodle" class="nav-item nav-link mx-2 text-white btn btn-secondary">Moodle</a>
+        <a id="matricule" class="nav-item nav-link mx-2 text-white btn btn-danger">Matricule</a>
+        <a id="gate" class="nav-item nav-link mx-2 text-white btn btn-success">Portail Captif</a>
+    </nav>
+
+    <div id="content-area">
+        <!-- Le contenu des fragments sera chargé ici -->
+    </div>
+
+    <!-- Le modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content text-center">
+            <h2 class="success">Entrer le nom du groupe</h2>
+            <input type="text" id="groupName" placeholder="Nom du groupe">
+            <button class="btn btn-info my-4" id="submitGroupName">Envoyer</button>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/jquery-3.6.4.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>
